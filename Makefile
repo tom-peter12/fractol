@@ -24,16 +24,15 @@ OBJS = ${SRC_FILES:.c=.o}
 
 $(NAME): ${OBJS}
 	@${MAKE} -C mlx
-	${CC} ${CFLAGS} ${OBJS} ${LINKER} -o ${NAME}
+	cd ./includes/libft/ && make
+	${CC} ${CFLAGS} ${OBJS} ${LINKER} ./includes/libft/libft.a -o ${NAME}
 
 all: ${NAME}
 
 clean:
-	cd ./mlx/ && make clean
 	${RM} ${OBJS}
 
 fclean: clean
-	cd ./mlx/ && make clean
 	${RM} ${NAME}
 
 re:	fclean all

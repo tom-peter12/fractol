@@ -26,6 +26,12 @@ typedef struct s_list
 	struct s_list	*prev;
 }					t_list;
 
+typedef struct s_decimal
+{
+	double	integer;
+	double	floatint;
+}			t_decimal;
+
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
@@ -80,5 +86,6 @@ int			ft_writer(va_list ap, char c);
 int			ft_iterative_power(int nb, int power);
 char		*ft_strrev(char *str);
 int			ft_strcmp(char *s1, char *s2);
+double		ft_atof(char *str);
 
 #endif

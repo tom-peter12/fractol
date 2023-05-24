@@ -12,13 +12,42 @@
 
 #include "../includes/fractol.h"
 
-int	main(void)
+int	ft_valid_jul(char *str)
 {
-	void	*mlx;
-	void	*mlx_win;
+	(void) str;
+	return (1);
+}
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1000, 1000, "This is MLX. Not Malcom X!");
-	mlx_loop(mlx_win);
+int	ft_check_params(int ac, char **av)
+{
+	t_fractal	*f;
+
+	if (ac == 2 && (ft_strcmp(av[1], "-m") == 0))
+	{
+		ft_draw_mandel(f);
+		return (1);
+	}
+	else if(ac == 4 && (ft_strcmp(av[1], "-j") == 0)
+		&& (ft_valid_jul(av[2]) && ft_valid_jul(av[3])))
+	{
+		ft_draw_julia(f, ft_atof(av[2]), ft_atof(av[3]));
+		return (1);
+	}
+	return (0);
+}
+
+void	ft_display_options(void)
+{
+	ft_putstr("Usage: ./fractol [-mj] [r i]\n");
+	ft_putstr("m : Mandelbrot Set\n");
+	ft_putstr("j : Julia Set [r i]\n");
+	ft_putstr("Where -2 >= (r, i) =< 2\n");
+	exit(ERROR);
+}
+
+int	main(int argc, char *argv[])
+{
+	if (ft_check_params(argc, argv))
+		ft_display_options();
 	return (0);
 }

@@ -21,8 +21,12 @@
 typedef struct		s_fmlx
 {
 	void			*ptr;
-	void			*mlx_ptr;
-	int				*mem;
+	void			*mlx_win;
+	void			*img;
+	int				*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
 }					t_fmlx;
 
 typedef struct		s_point
@@ -44,8 +48,12 @@ typedef struct		s_fractal
 	double			zoom;
 	double			m_x;
 	double			m_y;
-	int				max;
+	int				max_iter;
 	char			freeze;
 }					t_fractal;
+
+int		ft_check_params(int ac, char **av);
+void	ft_mandel(t_fractal *f, int width, int height);
+void	ft_init_mandel(t_fractal *f, int width, int height);
 
 #endif

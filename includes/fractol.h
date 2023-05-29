@@ -15,6 +15,7 @@
 
 #include "libft/libft.h"
 #include "../mlx/mlx.h"
+#include <math.h>
 
 #define ERROR -1
 
@@ -24,9 +25,11 @@ typedef struct		s_fmlx
 	void			*mlx_win;
 	void			*img;
 	int				*addr;
-	int				bits_per_pixel;
+	int				bpp;
 	int				line_length;
 	int				endian;
+	int				width;
+	int				height;
 }					t_fmlx;
 
 typedef struct		s_point
@@ -41,19 +44,20 @@ typedef struct		s_fractal
 	t_point			p;
 	double			c_re;
 	double			c_im;
-	double			z_re;
-	double			z_im;
-	double			oldre;
-	double			oldim;
+	double			n_re;
+	double			n_im;
+	double			o_re;
+	double			o_im;
 	double			zoom;
 	double			m_x;
 	double			m_y;
 	int				max_iter;
 	char			freeze;
+	int				color;
 }					t_fractal;
 
 int		ft_check_params(int ac, char **av);
-void	ft_mandel(t_fractal *f, int width, int height);
-void	ft_init_mandel(t_fractal *f, int width, int height);
+void	ft_mandel(t_fractal *f);
+void	ft_init_mandel(t_fractal *f);
 
 #endif

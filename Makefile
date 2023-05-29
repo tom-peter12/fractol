@@ -13,7 +13,7 @@
 NAME = fractol
 
 SRC_FILES = src/fractol.c \
-			src/mandelbrot.c \
+			src/mandelbrot/mandelbrot.c \
 
 CC = gcc
 RM = rm -rf

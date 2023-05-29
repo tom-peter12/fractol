@@ -12,17 +12,26 @@
 
 #include "../includes/fractol.h"
 
+int	ft_ratio(int width, int height)
+{
+	double	ratio;
+
+	ratio = (double) width / (double) height;
+	if (ratio > 1.5 || ratio < 1.0)
+		return (0);
+	return (1);
+}
+
 int	ft_check_params(int ac, char **av)
 {
 	t_fractal	f;
-	int			width;
-	int			height;
 
-	if (ac == 4 && (ft_strcmp(av[1], "m") == 0))
+	f.mlx.width = ft_atoi(av[2]);
+	f.mlx.height = ft_atoi(av[3]);
+	if (ac == 4 && (ft_strcmp(av[1], "m") == 0)
+		&& ft_ratio(f.mlx.width, f.mlx.height))
 	{
-		width = ft_atoi(av[2]);
-		height = ft_atoi(av[3]);
-		ft_mandel(&f, width, height);
+		ft_mandel(&f);
 		return (1);
 	}
 	return (0);
@@ -39,7 +48,7 @@ void	ft_display_options(void)
 
 int	main(int argc, char *argv[])
 {
-	if (ft_check_params(argc, argv))
+	if (!ft_check_params(argc, argv))
 		ft_display_options();
 	return (0);
 }

@@ -12,43 +12,65 @@
 
 #include "../includes/fractol.h"
 
-int	ft_ratio(int width, int height)
+// int	ft_check_params(int ac, char **av, t_fractal *f)
+// {
+// 	if (ac < 4)
+// 		return (NOT_ENOUGH_PARAMS);
+// 	else if (ft_strcmp(av[1], "m") && ac > 4)
+// 		return (TOO_MANY_ARGUMENTS_M);
+// 	else if (ft_strcmp(av[1], "j") && ac < 6)
+// 		return (TOO_FEW_ARGUMENTS_J);
+// 	else if (ft_strcmp(av[1], "j") && ac > 6)
+// 		return (TOO_MANY_ARGUMENTS_J);
+// 	else if (!ft_ratio(f->mlx.width, f->mlx.height))
+// 		return (ASPECT_RATIO_NOT_GOOD);
+// 	return (0);
+// }
+
+int	ft_drawing_fractals(int ac, char **av, t_fractal *f)
 {
-	double	ratio;
-
-	ratio = (double) width / (double) height;
-	if (ratio > 1.5 || ratio < 1.0)
-		return (0);
-	return (1);
-}
-
-int	ft_check_params(int ac, char **av)
-{
-	t_fractal	f;
-
-	f.mlx.width = ft_atoi(av[2]);
-	f.mlx.height = ft_atoi(av[3]);
-	if (ac == 4 && (ft_strcmp(av[1], "m") == 0)
-		&& ft_ratio(f.mlx.width, f.mlx.height))
+	if (!ft_strcmp(av[1], "m"))
 	{
-		ft_mandel(&f);
+		ft_mandel(f);
+		return (1);
+	}
+	else if (ac == 6 && (!ft_strcmp(av[1], "j")))
+	{
+		ft_juia(f, av);
 		return (1);
 	}
 	return (0);
 }
 
-void	ft_display_options(void)
+int	ft_validate_dim(int width, int height)
 {
-	ft_putstr("Usage: ./fractol [mj] [r i]\n");
-	ft_putstr("m : Mandelbrot Set\n");
-	ft_putstr("j : Julia Set [r i]\n");
-	ft_putstr("Where -2 >= (r, i) =< 2\n");
-	exit(ERROR);
+	if ((width >= 1000 || width < 200) && (height < 200 || height > 800))
+		return (1);
+	if (ft_ratio(width, height))
+		return (1);
+	return (0);
 }
 
 int	main(int argc, char *argv[])
 {
-	if (!ft_check_params(argc, argv))
+	t_fractal	f;
+	int			width;
+	int			height;
+
+
+	if (argc >= 4)
+	{
+		width = ft_atoi(argv[2]);
+		height = ft_atoi(argv[3]);
+		if (ft_validate_dim(width, height))
+			ft_display_options();
+		else
+		{
+			f.mlx.width = width;
+			f.mlx.height = height;
+		}
+	}
+	if (!ft_drawing_fractals(argc, argv, &f))
 		ft_display_options();
 	return (0);
 }

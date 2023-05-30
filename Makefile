@@ -13,14 +13,17 @@
 NAME = fractol
 
 SRC_FILES = src/fractol.c \
+			src/fractol_utils.c \
 			src/mandelbrot/mandelbrot.c \
+			src/mandelbrot/events_m.c \
+			src/mandelbrot/utils_m.c \
+			src/julia/julia.c \
 
 CC = gcc
 RM = rm -rf
 
 CFLAGS = -Wall -Werror -Wextra
 LINKER = -Lmlx -lmlx -framework OpenGL -framework AppKit
-
 OBJS = ${SRC_FILES:.c=.o}
 
 $(NAME): ${OBJS}

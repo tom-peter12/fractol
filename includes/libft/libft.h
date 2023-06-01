@@ -17,6 +17,7 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <stdio.h>
 
 typedef struct s_list
 {
@@ -87,5 +88,8 @@ int			ft_iterative_power(int nb, int power);
 char		*ft_strrev(char *str);
 int			ft_strcmp(char *s1, char *s2);
 double		ft_atof(char *str);
+
+int			ft_isspace(char c);
+int			ft_set_sign(const char *str, int i, int *sign);
 
 #endif

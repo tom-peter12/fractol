@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_isspace(char c)
+int	ft_isspace(char c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ')
 		return (1);
@@ -33,15 +33,15 @@ int	ft_set_sign(const char *str, int i, int *sign)
 
 int	ft_atoi(const char *str)
 {
-	int		sign;
 	int		i;
 	long	number;
 	int		c;
+	int		sign;
 
-	sign = 1;
 	i = 0;
 	number = 0;
 	c = 0;
+	sign = 1;
 	while (ft_isspace(str[i]))
 		i++;
 	while (str[i] == '0')

@@ -14,10 +14,11 @@ NAME = fractol
 
 SRC_FILES = src/fractol.c \
 			src/fractol_utils.c \
-			src/mandelbrot/mandelbrot.c \
-			src/mandelbrot/events_m.c \
-			src/mandelbrot/utils_m.c \
-			src/julia/julia.c \
+			src/ft_common.c \
+			src/ft_init.c \
+			src/mandelbrot.c \
+			src/events.c \
+			src/julia.c \
 
 CC = gcc
 RM = rm -rf
@@ -34,9 +35,12 @@ $(NAME): ${OBJS}
 all: ${NAME}
 
 clean:
+	cd ./includes/libft/ && make clean
+	cd ./mlx && make clean
 	${RM} ${OBJS}
 
 fclean: clean
+	cd ./includes/libft/ && make fclean
 	${RM} ${NAME}
 
 re:	fclean all

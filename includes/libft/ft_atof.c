@@ -34,10 +34,12 @@ static char	*ft_int(char *str, int *i)
 double	ft_atof(char *str)
 {
 	int			i;
+	int			sign;
 	t_decimal	number;
 	char		*before_dot;
 	int			temp;
 
+	sign = 1;
 	before_dot = ft_int(str, &i);
 	temp = ft_strlen(str) - 1;
 	number.integer = ft_atoi(before_dot);
@@ -50,5 +52,8 @@ double	ft_atof(char *str)
 		temp--;
 	}
 	number.floatint = number.floatint * 0.1;
-	return ((double )(number.integer + number.floatint));
+	while (ft_isspace(*str))
+		str++;
+	ft_set_sign(str, 0, &sign);
+	return ((double )(number.integer + ((number.floatint) * sign)));
 }

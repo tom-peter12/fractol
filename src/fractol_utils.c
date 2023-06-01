@@ -61,5 +61,7 @@ void	ft_display_error(int n)
 		ft_printf("INVALID_JULIA_INPUT\n");
 	else if (n == TOO_MANY_ARGUMENTS_B)
 		ft_printf("TOO_MANY_ARGUMENTS_B\n");
+	else if (n == INVALID_FRACTAL_INSTRUCTION)
+		ft_printf("INVALID_FRACTAL_INSTRUCTION\n");
 	exit(ERROR);
 }

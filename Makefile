@@ -9,6 +9,7 @@
 #    Updated: 2023/05/08 16:48:07 by tpetros          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+$(VERBOSE).SILENT:
 
 NAME = fractol
 
@@ -28,19 +29,19 @@ LINKER = -Lmlx -lmlx -framework OpenGL -framework AppKit
 OBJS = ${SRC_FILES:.c=.o}
 
 $(NAME): ${OBJS}
-	@${MAKE} -C mlx
-	cd ./includes/libft/ && make
+	${MAKE} -C mlx
+	@cd ./includes/libft/ && make
 	${CC} ${CFLAGS} ${OBJS} ${LINKER} ./includes/libft/libft.a -o ${NAME}
 
 all: ${NAME}
 
 clean:
-	cd ./includes/libft/ && make clean
-	cd ./mlx && make clean
+	@cd ./includes/libft/ && make clean
+	@cd ./mlx && make clean
 	${RM} ${OBJS}
 
 fclean: clean
-	cd ./includes/libft/ && make fclean
+	@cd ./includes/libft/ && make fclean
 	${RM} ${NAME}
 
 re:	fclean all

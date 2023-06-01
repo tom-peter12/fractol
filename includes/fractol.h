@@ -25,6 +25,7 @@
 # define ASPECT_RATIO_NOT_GOOD 5
 # define INVALID_JULIA_INPUT 6
 # define TOO_MANY_ARGUMENTS_B 7
+# define INVALID_FRACTAL_INSTRUCTION 8
 
 typedef struct s_fmlx
 {

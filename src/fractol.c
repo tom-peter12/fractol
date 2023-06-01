@@ -51,6 +51,8 @@ int	ft_check_params(int ac, char **av)
 		return (ASPECT_RATIO_NOT_GOOD);
 	else if (ac == 6 && ft_valid_inp(av))
 		return (INVALID_JULIA_INPUT);
+	else if (!ft_strchr("mjb", av[1][0]))
+		return (INVALID_FRACTAL_INSTRUCTION);
 	return (0);
 }
 

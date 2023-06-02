@@ -38,7 +38,7 @@ int	ft_ratio(int width, int height)
 	double	ratio;
 
 	ratio = (double) width / (double) height;
-	if (ratio > 1.7 || ratio < 1.2)
+	if (ratio > 1.7 || ratio < 1.0)
 		return (1);
 	return (0);
 }
@@ -47,21 +47,25 @@ void	ft_display_error(int n)
 {
 	if (n == 0)
 		return ;
-	else if (n == NOT_ENOUGH_PARAMS)
-		ft_printf("NOT_ENOUGH_PARAMS\n");
-	else if (n == TOO_MANY_ARGUMENTS_M)
-		ft_printf("TOO_MANY_ARGUMENTS_M\n");
-	else if (n == TOO_FEW_ARGUMENTS_J)
-		ft_printf("TOO_FEW_ARGUMENTS_J\n");
-	else if (n == TOO_MANY_ARGUMENTS_J)
-		ft_printf("TOO_MANY_ARGUMENTS_J\n");
-	else if (n == ASPECT_RATIO_NOT_GOOD)
-		ft_printf("ASPECT_RATIO_NOT_GOOD\n");
-	else if (n == INVALID_JULIA_INPUT)
-		ft_printf("INVALID_JULIA_INPUT\n");
-	else if (n == TOO_MANY_ARGUMENTS_B)
-		ft_printf("TOO_MANY_ARGUMENTS_B\n");
+	ft_printf("\nUsage: ./fractol command [ARGUMENTS]\n\n");
+	ft_printf("commands: \tm\t=>\tmandelbrot\n");
+	ft_printf("\t\tj\t=>\tjulia\n");
+	ft_printf("\t\tb\t=>\tburning ship\n\n");
+	if (n == NOT_ENOUGH_PARAMS)
+		ft_printf(RED"NOT_ENOUGH_PARAMS\n\n"NORMAL);
 	else if (n == INVALID_FRACTAL_INSTRUCTION)
-		ft_printf("INVALID_FRACTAL_INSTRUCTION\n");
+		ft_printf(RED"INVALID_FRACTAL_INSTRUCTION\n\n"NORMAL);
+	else if (n == TOO_MANY_ARGUMENTS_M)
+		ft_printf(RED"TOO_MANY_ARGUMENTS_MANDELBROT\n\n"NORMAL);
+	else if (n == TOO_FEW_ARGUMENTS_J)
+		ft_printf(RED"TOO_FEW_ARGUMENTS_JULIA\n\n"NORMAL);
+	else if (n == TOO_MANY_ARGUMENTS_J)
+		ft_printf(RED"TOO_MANY_ARGUMENTS_JULIA\n\n"NORMAL);
+	else if (n == ASPECT_RATIO_NOT_GOOD)
+		ft_printf(RED"ASPECT_RATIO_NOT_GOOD\n\n"NORMAL);
+	else if (n == INVALID_JULIA_INPUT)
+		ft_printf(RED"INVALID_JULIA_INPUT\n\n"NORMAL);
+	else if (n == TOO_MANY_ARGUMENTS_B)
+		ft_printf(RED"TOO_MANY_ARGUMENTS_BSHIP\n\n"NORMAL);
 	exit(ERROR);
 }

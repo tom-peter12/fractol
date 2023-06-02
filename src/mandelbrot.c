@@ -24,15 +24,15 @@ void	ft_draw_mandel(t_fractal *m)
 		while (++p.x < m->mlx.width)
 		{
 			m->c_re = 1.5 * (p.x - m->mlx.width / 2) / \
-				(0.5 * m->zoom * m->mlx.width) - m->m_x;
+				(m->zoom * m->mlx.width / 2) - m->m_x;
 			m->c_im = (p.y - m->mlx.height / 2) / \
-				(0.5 * m->zoom * m->mlx.height) - m->m_y;
+				(m->zoom * m->mlx.height / 2) - m->m_y;
 			ft_set_zero(&(m->n_re), &(m->n_im));
 			ft_ifs(m, &i);
 			if (i == m->max_iter)
 				m->mlx.addr[p.y * m->mlx.width + p.x] = 0;
 			else
-				m->mlx.addr[p.y * m->mlx.width + p.x] = m->color * i;
+				m->mlx.addr[p.y * m->mlx.width + p.x] = (i >> 2) * m->color;
 		}
 	}
 }

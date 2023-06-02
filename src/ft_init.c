@@ -28,13 +28,11 @@ void	ft_init_mandel(t_fractal *m)
 	m->c_im = 0.0;
 	m->n_re = 0.0;
 	m->n_im = 0.0;
-	m->o_im = 0.0;
-	m->o_re = 0.0;
 	m->zoom = 1.0;
 	m->m_x = 0;
 	m->m_y = 0;
 	m->max_iter = 50;
-	m->color = 255;
+	m->color = 0x31104a;
 }
 
 void	ft_init_julia(t_fractal *j)
@@ -47,13 +45,11 @@ void	ft_init_julia(t_fractal *j)
 		&(j->mlx.line_length), &(j->mlx.endian));
 	j->n_re = 0.0;
 	j->n_im = 0.0;
-	j->o_im = 0.0;
-	j->o_re = 0.0;
 	j->zoom = 1.0;
 	j->m_x = 0;
 	j->m_y = 0;
 	j->max_iter = 50;
-	j->color = 255;
+	j->color = 0x31104a;
 }
 
 void	ft_set_zero(double *n_re, double *n_im)

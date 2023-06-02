@@ -31,34 +31,17 @@ void	ft_ifs(t_fractal *f, int *i)
 
 int	ft_exit(t_fractal *f)
 {
-	mlx_destroy_image(f->mlx.ptr, f->mlx.img);
-	mlx_destroy_window(f->mlx.ptr, f->mlx.mlx_win);
+	if (f->mlx.ptr || f->mlx.img)
+		mlx_destroy_image(f->mlx.ptr, f->mlx.img);
+	if (f->mlx.ptr || f->mlx.mlx_win)
+		mlx_destroy_window(f->mlx.ptr, f->mlx.mlx_win);
 	exit(1);
-}
-
-int	create_trgb(int r, int g, int b)
-{
-	return (r << 16 | g << 8 | b);
-}
-
-void	ft_color(t_fractal *f)
-{
-	int	red;
-	int	green;
-	int	blue;
-
-	red = (f->max_iter << 4) / (1 << f->color);
-	green = (f->max_iter << 2) / (1 << f->color);
-	blue = ((f->max_iter ^ f->color) << 3) % (1 << f->color);
-	f->color = create_trgb(red, green, blue);
-	if (f->color < 2)
-		f->color = (255);
 }
 
 void	ft_change_iter(t_fractal *f)
 {
-	if (f->max_iter < 150)
+	if (f->max_iter < 200)
 		f->max_iter += 10;
-	else if (f->max_iter >= 150)
-		f->max_iter = 20;
+	else if (f->max_iter >= 200)
+		f->max_iter = 50;
 }

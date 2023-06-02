@@ -23,15 +23,15 @@ void	ft_draw_julia(t_fractal *j)
 		p.x = -1;
 		while (++p.x < j->mlx.width)
 		{
-			j->n_re = 1.5 * (p.x - j->mlx.width / 2) / \
-				(0.5 * j->zoom * j->mlx.width) - j->m_x;
+			j->n_re = -1.5 * (p.x - j->mlx.width / 2) / \
+				(j->zoom * j->mlx.width / 2) - j->m_x;
 			j->n_im = (p.y - j->mlx.height / 2) / \
-				(0.5 * j->zoom * j->mlx.height) - j->m_y;
+				(j->zoom * j->mlx.height / 2) - j->m_y;
 			ft_ifs(j, &i);
 			if (i == j->max_iter)
 				j->mlx.addr[p.y * j->mlx.width + p.x] = 0;
 			else
-				j->mlx.addr[p.y * j->mlx.width + p.x] = j->color * i;
+				j->mlx.addr[p.y * j->mlx.width + p.x] = j->color * (i >> 2);
 		}
 	}
 }

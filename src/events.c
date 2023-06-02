@@ -29,8 +29,8 @@ void	ft_clean(t_fractal *f)
 	f->zoom = 1.0;
 	f->m_x = 0.0;
 	f->m_y = 0.0;
-	f->color = 127;
-	f->max_iter = 20;
+	f->color = 0x31104a;
+	f->max_iter = 50;
 }
 
 int	ft_mouse_events(int mousecode, int x, int y, t_fractal *m)
@@ -38,8 +38,8 @@ int	ft_mouse_events(int mousecode, int x, int y, t_fractal *m)
 	mlx_clear_window(m->mlx.ptr, m->mlx.mlx_win);
 	if (mousecode == 1 || mousecode == 4)
 	{
-		m->m_x += 0.0012 * ((m->mlx.width / 2) - x) / m->zoom;
-		m->m_y += 0.0012 * ((m->mlx.height / 2) - y) / m->zoom;
+		m->m_x += 0.00113 * ((m->mlx.width / 2) - x) / m->zoom;
+		m->m_y += 0.00113 * ((m->mlx.height / 2) - y) / m->zoom;
 		if (mousecode == 4)
 			m->zoom *= 1.5;
 	}
@@ -61,8 +61,6 @@ int	ft_key_events_mandel(int k_code, t_fractal *f)
 	mlx_clear_window(f->mlx.ptr, f->mlx.mlx_win);
 	if (k_code == 53)
 		ft_exit(f);
-	else if (k_code == 8)
-		ft_color(f);
 	else if (k_code == 34)
 		ft_change_iter(f);
 	else if (k_code == 126 || k_code == 125 || k_code == 124 || k_code == 123)

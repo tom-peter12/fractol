@@ -26,6 +26,8 @@
 # define INVALID_JULIA_INPUT 6
 # define TOO_MANY_ARGUMENTS_B 7
 # define INVALID_FRACTAL_INSTRUCTION 8
+# define RED "\x1b[31m"
+# define NORMAL "\x1b[m"
 
 typedef struct s_fmlx
 {
@@ -81,7 +83,6 @@ void	ft_init_julia(t_fractal *j);
 void	ft_ifs(t_fractal *m, int *i);
 int		ft_exit(t_fractal *f);
 int		create_trgb(int r, int g, int b);
-void	ft_color(t_fractal *f);
 void	ft_change_iter(t_fractal *f);
 
 #endif

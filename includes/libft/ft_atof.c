@@ -43,6 +43,7 @@ double	ft_atof(char *str)
 	before_dot = ft_int(str, &i);
 	temp = ft_strlen(str) - 1;
 	number.integer = ft_atoi(before_dot);
+	free(before_dot);
 	number.floatint = 0;
 	if (str[i] == '\0')
 		return ((double) 0);

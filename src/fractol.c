@@ -14,8 +14,8 @@
 
 void	ft_start_draw(int ac, char **av, t_fractal *f)
 {
-	f->mlx.width = ft_atof(av[2]);
-	f->mlx.height = ft_atof(av[3]);
+	f->mlx.width = ft_atoi(av[2]);
+	f->mlx.height = ft_atoi(av[3]);
 	if (ac == 4 && !ft_strcmp(av[1], "m"))
 	{
 		f->flag = 2;

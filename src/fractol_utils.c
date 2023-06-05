@@ -12,14 +12,40 @@
 
 #include "../includes/fractol.h"
 
+int	ft_valid(char *str)
+{
+	int	i;
+	int	flag;
+
+	i = 0;
+	flag = 0;
+	if (str[i] == '+' || str[i] == '-' || str[i] == '\0')
+		i++;
+	while (ft_isdigit(str[i]) || str[i] == '.')
+	{
+		if (str[i] == '.')
+			flag++;
+		if (flag == 2)
+			return (1);
+		i++;
+	}
+	if (i != ((int) ft_strlen(str)) || (str[0] == '+' && ft_strlen(str) == 1)
+		|| (str[0] == '-' && ft_strlen(str) == 1))
+		return (1);
+	else
+		return (0);
+}
+
 int	ft_valid_inp(char **av)
 {
 	double	one;
 	double	two;
 
+	if (ft_valid(av[4]) || ft_valid(av[5]))
+		return (1);
 	one = ft_atof(av[4]);
 	two = ft_atof(av[5]);
-	if ((one > 2.0 || one < -2.0) && (two > 2.0 || two < -2.0))
+	if ((one > 2.0 || one < -2.0) || (two > 2.0 || two < -2.0))
 		return (1);
 	return (0);
 }

@@ -36,12 +36,11 @@ void	ft_clean(t_fractal *f)
 int	ft_mouse_events(int mousecode, int x, int y, t_fractal *m)
 {
 	mlx_clear_window(m->mlx.ptr, m->mlx.mlx_win);
-	if (mousecode == 1 || mousecode == 4)
+	if (mousecode == 4)
 	{
 		m->m_x += 0.00113 * ((m->mlx.width / 2) - x) / m->zoom;
 		m->m_y += 0.00113 * ((m->mlx.height / 2) - y) / m->zoom;
-		if (mousecode == 4)
-			m->zoom *= 1.5;
+		m->zoom *= 1.5;
 	}
 	if (mousecode == 5)
 	{

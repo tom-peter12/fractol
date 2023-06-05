@@ -56,6 +56,6 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	if (sign * number > 2147483647 || sign * number < -2147483648 || c > 10)
-		return (-1);
+		return (-7);
 	return ((int )(number * sign));
 }

@@ -24,12 +24,30 @@ SRC_FILES = src/fractol.c \
 CC = gcc
 RM = rm -rf
 
-CFLAGS = -Wall -Werror -Wextra
-LINKER = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLXMAC     := ./mlx/
+MLXLINUX   := ./mlx_linux/
+
+CFLAGS 		:= -Wall -Werror -Wextra
+MacLinker 	:= -Lmlx -lmlx -framework OpenGL -framework AppKit
+LinuxLink 	:= -Lmlx_linux -lmlx_Linux -L/usr/lib -Iincludes/mlx_linux -lXext -lX11 -lm -lz
+
+OS := $(shell uname)
+
+ifeq ($(OS),Darwin)
+	MLX     = $(MLXMAC)
+	LINKER  = $(MacLinker)
+else ifeq ($(OS),Linux)
+	MLX     = $(MLXLINUX)
+	LINKER  = $(LinuxLink)
+else
+	LINKER  =
+endif
+
 OBJS = ${SRC_FILES:.c=.o}
 
 $(NAME): ${OBJS}
-	${MAKE} -C mlx
+	@echo "Compiling and Linking MLX"
+	@$(MAKE) -C $(MLX) 2>/dev/null
 	@cd ./includes/libft/ && make
 	${CC} ${CFLAGS} ${OBJS} ${LINKER} ./includes/libft/libft.a -o ${NAME}
 
@@ -37,7 +55,7 @@ all: ${NAME}
 
 clean:
 	@cd ./includes/libft/ && make clean
-	@cd ./mlx && make clean
+	@make clean -sC $(MLX)
 	${RM} ${OBJS}
 
 fclean: clean

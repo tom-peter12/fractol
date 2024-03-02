@@ -13,9 +13,15 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# if __APPLE__
+#  include "../mlx/mlx.h"
+# elif __linux__
+#  include "../mlx_linux/mlx.h"
+# endif
+
 # include "libft/libft.h"
-# include "../mlx/mlx.h"
 # include <math.h>
+# include <stdio.h>
 
 # define ERROR -1
 # define NOT_ENOUGH_PARAMS 1
@@ -28,6 +34,31 @@
 # define INVALID_FRACTAL_INSTRUCTION 8
 # define RED "\x1b[31m"
 # define NORMAL "\x1b[m"
+
+# if __APPLE__
+#  define WIN_WIDTH  1920
+#  define WIN_HEIGHT 1080
+#  define A 		0
+#  define S 		1
+#  define D 		2
+#  define W			13
+#  define LEFT		123
+#  define RIGHT		124
+#  define ESC		53
+#  define I			34
+
+# elif __linux__
+#  define WIN_WIDTH  1080
+#  define WIN_HEIGHT 700
+#  define A 		97
+#  define S			115
+#  define D			100
+#  define W			119
+#  define LEFT		65361
+#  define RIGHT		65363
+#  define ESC		65307
+#  define I			105
+# endif
 
 typedef struct s_fmlx
 {

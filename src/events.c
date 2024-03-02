@@ -58,9 +58,9 @@ int	ft_mouse_events(int mousecode, int x, int y, t_fractal *m)
 int	ft_key_events_mandel(int k_code, t_fractal *f)
 {
 	mlx_clear_window(f->mlx.ptr, f->mlx.mlx_win);
-	if (k_code == 53)
+	if (k_code == ESC)
 		ft_exit(f);
-	else if (k_code == 34)
+	else if (k_code == I)
 		ft_change_iter(f);
 	else if (k_code == 126 || k_code == 125 || k_code == 124 || k_code == 123)
 		ft_move(f, k_code);
